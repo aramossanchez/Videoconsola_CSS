@@ -1,0 +1,92 @@
+
+:root {
+    --color-consola: #2472ED;
+    --botones: #DADBDD;
+}
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    background-color: cornsilk;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#consola{
+    background-color: var(--color-consola);
+    width: 40em;
+    height: 22em;
+    display: flex;
+    flex-direction: row;
+    border-radius: 80% 80% 50% 50% / 40% 40% 40% 40%;
+}
+/*
+*****************************PARTE IZQUIERDA*****************************
+*/
+#botones-izquierda{
+    /*background-color: red;*/
+    width: 25%;
+    height: 22em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#cruceta{
+    background-color: var(--botones);
+    height: 23%;
+    position: relative;
+    width: 50%;
+    clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
+    transform: rotate(45deg);
+}
+    /*
+    background-color: var(--botones);
+    height: 28%;
+    position: relative;
+    width: 15%;
+}
+#cruceta:after {
+    background-color: var(--botones);
+    content: "";
+    height: 20%;
+    left: -158%;
+    position: absolute;
+    top: 40px;
+    width: 425%;
+}*/
+/*
+*****************************PARTE CENTRAL*****************************
+*/
+#central{
+    width: 50%;
+    height: 22em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+#marco-negro{
+    background-color: black;
+    height: 80%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 20% 20% 200% 200% / 300% 300% 50% 50%;
+}
+#pantalla{
+    width: 85%;
+    height: 65%;
+    background-color: white;
+    margin-top:10%;
+}
+/*
+*****************************PARTE DERECHA*****************************
+*/
+#botones-derecha{
+    /*background-color: hotpink;*/
+    width: 25%;
+    height: 22em;
+}
