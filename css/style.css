@@ -27,8 +27,12 @@ body{
 }
 /*
 *****************************PARTE IZQUIERDA*****************************
+*****************************PARTE IZQUIERDA*****************************
+*****************************PARTE IZQUIERDA*****************************
+*****************************PARTE IZQUIERDA*****************************
+*****************************PARTE IZQUIERDA*****************************
 */
-#botones-izquierda{
+#parte-izquierda{
     width: 25%;
     height: 22em;
     display: flex;
@@ -36,8 +40,13 @@ body{
     align-items: center;
     justify-content: center;
 }
+/*
+*****************************CRUCETA*****************************
+*****************************CRUCETA*****************************
+*****************************CRUCETA*****************************
+*/
 #cruceta{
-    margin-left: 2.5em;
+    margin-left: 2em;
     background-color: var(--boton);
     height: 23%;
     position: relative;
@@ -45,7 +54,7 @@ body{
     clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
     transform: rotate(45deg);
 }
-#botones-importantes{
+#botones-izquierda{
     margin: 2em 0 0 1.5em;
     width: 65%;
     height: 20%;
@@ -92,8 +101,12 @@ body{
 }
 /*
 *****************************PARTE CENTRAL*****************************
+*****************************PARTE CENTRAL*****************************
+*****************************PARTE CENTRAL*****************************
+*****************************PARTE CENTRAL*****************************
+*****************************PARTE CENTRAL*****************************
 */
-#central{
+#parte-central{
     width: 50%;
     height: 22em;
     display: flex;
@@ -109,20 +122,89 @@ body{
     flex-direction: column;
     align-items: center;
     border-radius: 20% 20% 200% 200% / 300% 300% 50% 50%;
-    border:1px solid rgba(218, 218, 218, 0.521);
+    border:1px solid rgba(218, 218, 218, 0.233);
 }
 #pantalla{
     width: 85%;
     height: 65%;
     background-color: white;
     margin-top:10%;
-    border: 5px solid black;
+    border: 7px solid black;
 }
 /*
 *****************************PARTE DERECHA*****************************
+*****************************PARTE DERECHA*****************************
+*****************************PARTE DERECHA*****************************
+*****************************PARTE DERECHA*****************************
+*****************************PARTE DERECHA*****************************
 */
-#botones-derecha{
-    /*background-color: hotpink;*/
+#parte-derecha{
+    /* background-color: hotpink; */
     width: 25%;
     height: 22em;
+    font-family: 'Six Caps', sans-serif;
+    font-weight: bold;
+    color: var(--color-brillo-consola);
+    text-shadow: 1px 1px 0px rgb(0, 0, 0);
+}
+#power{
+    /* background-color: fuchsia; */
+    width: 50%;
+    height: 20%;
+    font-size: 0.8em;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: end;
+}
+#led{
+    width: 10%;
+    height: 11%;
+    border-radius: 50px;
+    background-color: rgb(27, 27, 27);
+    margin-bottom: 0.2em;
+    transition: 0.3s;
+}
+#led:hover{
+    background-color: rgb(0, 255, 13);
+    box-shadow: 0px 1px 8px 1px rgb(118, 240, 138);
+}
+#texto-power{
+    margin-left: 0.5em;
+}
+#botones-derecha{
+    /* background-color: turquoise; */
+    width: 100%;
+    height: 42%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.boton-derecha{
+    width: 25%;
+    height: 27%;
+    border-radius: 50px;
+    background-color: var(--boton);
+}
+#boton-b{
+    margin: 2.5em 0 0 -1em;
+}
+
+#boton-a{
+    margin-left: 1.5em;
+}
+#altavoz{
+    /* background-color: coral; */
+    margin-left: 1em;
+    height: 40%;
+    width: 100%;
+}
+.linea-altavoz{
+    background-color: rgb(34, 34, 34);
+    width: 50%;
+    height: 4%;
+    margin-bottom: 0.35em;
+    border-radius: 5px;
+    transform: rotate(-12deg);
 }
