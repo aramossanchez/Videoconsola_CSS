@@ -13,7 +13,7 @@
             <div id="botones-izquierda">
                 <div id="start">
                     <div id="texto-boton-start">START</div>
-                    <div id="boton-start-redondo"></div>
+                    <div id="boton-start-redondo" onclick="encenderConsola(), apretarBoton('boton-start-redondo')"></div>
                 </div>
                 <div id="select">
                     <div id="texto-boton-select">SELECT</div>
@@ -28,7 +28,7 @@
         </div>
         <div id="parte-derecha">
             <div id="power">
-                <div id="led"></div>
+                <div id="led" class="led-apagado"></div>
                 <div id="texto-power">POWER</div>
             </div>
             <div id="botones-derecha">
@@ -44,5 +44,6 @@
             </div>
         </div>
     </div>
+    <script src="./js/script.js"></script>
 </body>
 </html>
