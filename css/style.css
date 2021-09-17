@@ -1,9 +1,9 @@
-
 :root {
     --color-consola: #347ef5;
     --color-brillo-consola: #1f64d3;
-    --botones: #DADBDD;
+    --boton: #DADBDD;
 }
+@import url('https://fonts.googleapis.com/css2?family=Six+Caps&display=swap');
 *{
     padding: 0;
     margin: 0;
@@ -29,7 +29,6 @@ body{
 *****************************PARTE IZQUIERDA*****************************
 */
 #botones-izquierda{
-    /*background-color: red;*/
     width: 25%;
     height: 22em;
     display: flex;
@@ -38,29 +37,59 @@ body{
     justify-content: center;
 }
 #cruceta{
-    background-color: var(--botones);
+    margin-left: 2.5em;
+    background-color: var(--boton);
     height: 23%;
     position: relative;
     width: 50%;
     clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
     transform: rotate(45deg);
-    box-shadow: 0px 2px 18px 2px black;
 }
-    /*
-    background-color: var(--botones);
-    height: 28%;
-    position: relative;
-    width: 15%;
-}
-#cruceta:after {
-    background-color: var(--botones);
-    content: "";
+#botones-importantes{
+    margin: 2em 0 0 1.5em;
+    width: 65%;
     height: 20%;
-    left: -158%;
+    font-family: 'Six Caps', sans-serif;
+    font-weight: bold;
+    color: var(--color-brillo-consola);
+    text-shadow: 1px 1px 0px rgb(0, 0, 0);
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    transform: rotate(15deg);
+}
+#start, #select{
+    background-color: var(--color-brillo-consola);
+    width: 100%;
+    height: 40%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    position: relative;
+    box-shadow: 0px 0px 4px 1px grey;
+}
+#texto-boton-start{
     position: absolute;
-    top: 40px;
-    width: 425%;
-}*/
+    left: 15%;
+    top: 18%;
+}
+#boton-start-redondo, #boton-select-redondo{
+    height: 100%;
+    width: 27%;
+    background-color: var(--boton);
+    border-radius: 50px;
+}
+#select{
+    margin-top: 0.6em;
+    margin-left: 0.5em;
+}
+#texto-boton-select{
+    position: absolute;
+    left: 12%;
+    top: 18%;
+    font-size:0.95em;
+}
 /*
 *****************************PARTE CENTRAL*****************************
 */
