@@ -130,7 +130,6 @@ body{
     background-color: rgb(194, 193, 193);
     margin-top:10%;
     border: 7px solid black;
-    transition: 0.3s;
 }
 #pantalla video{
     width: 100%;
@@ -138,6 +137,10 @@ body{
 }
 #intro-game-boy{
     display: none;
+}
+#juego div{
+    /* background-image: url("../game/img/mario-saltando-derecha.png");
+    background-size: cover; */
 }
 /*
 *****************************PARTE DERECHA*****************************

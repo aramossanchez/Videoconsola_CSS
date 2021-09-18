@@ -9,11 +9,11 @@
 <body>
     <div id="consola">
         <div id="parte-izquierda">
-            <div id="cruceta"></div>
+            <div id="cruceta" onclick="moverDerecha()"></div>
             <div id="botones-izquierda">
                 <div id="start">
                     <div id="texto-boton-start">START</div>
-                    <div id="boton-start-redondo" onclick="encenderConsola(), apretarBoton('boton-start-redondo')"></div>
+                    <div id="boton-start-redondo" onclick="encenderConsola(), apretarBoton('boton-start-redondo'), arrancarJuego()"></div>
                 </div>
                 <div id="select">
                     <div id="texto-boton-select">SELECT</div>
@@ -24,6 +24,9 @@
         <div id="parte-central">
             <div id="marco-negro">
                 <div id="pantalla">
+                    <div id="juego">
+
+                    </div>
                     <video id="intro-game-boy">
                         <source src="./video/intro.webm" type="video/webm">
                     </video>
@@ -37,7 +40,7 @@
             </div>
             <div id="botones-derecha">
                 <div id="boton-b" class="boton-derecha"></div>
-                <div id="boton-a" class="boton-derecha"></div>
+                <div id="boton-a" class="boton-derecha" onclick="saltar()"></div>
             </div>
             <div id="altavoz">
                 <div class="linea-altavoz"></div>
@@ -49,5 +52,6 @@
         </div>
     </div>
     <script src="./js/script.js"></script>
+    <script src="./game/js/main.js"></script>
 </body>
 </html>
