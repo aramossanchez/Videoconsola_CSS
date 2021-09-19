@@ -19,7 +19,7 @@ personaje.style.width="10%";
 personaje.style.position="absolute";
 personaje.style.bottom="0";
 personaje.style.left="0";
-personaje.style.backgroundImage="url(../game/img/mario-quieto-derecha.png)"
+personaje.style.backgroundImage="url(/Videoconsola_CSS/game/img/mario-quieto-derecha.png)"
 personaje.style.backgroundSize="contain";
 personaje.style.backgroundRepeat="no-repeat";
 
@@ -49,7 +49,7 @@ setInterval( mainLoop , 10);
 var contador = 0;
 
 const saltar = () =>{
-    personaje.style.backgroundImage="url(../game/img/mario-saltando-derecha.png)"
+    personaje.style.backgroundImage="url(/Videoconsola_CSS/game/img/mario-saltando-derecha.png)"
     personaje.style.transition="0.3s"
     personaje.style.backgroundSize="contain";
     personaje.style.backgroundRepeat="no-repeat";
@@ -59,12 +59,12 @@ const saltar = () =>{
     }, 400);
     setTimeout(() => {
         personaje.style.transition="0s";
-        personaje.style.backgroundImage="url(../game/img/mario-quieto-derecha.png)"        
+        personaje.style.backgroundImage="url(/Videoconsola_CSS/game/img/mario-quieto-derecha.png)"        
     }, 600);
 }
 
 const saltoHorizontal = () =>{
-    personaje.style.backgroundImage="url(../game/img/mario-volando-derecha.png)";
+    personaje.style.backgroundImage="url(/Videoconsola_CSS/game/img/mario-volando-derecha.png)";
     personaje.style.transition="0.3s"
     personaje.style.left = x + 20 + "%";
     x = x + 20;
@@ -74,7 +74,7 @@ const saltoHorizontal = () =>{
     }, 400);
     setTimeout(() => {
         personaje.style.transition="0s";
-        personaje.style.backgroundImage="url(../game/img/mario-quieto-derecha.png)"        
+        personaje.style.backgroundImage="url(/Videoconsola_CSS/game/img/mario-quieto-derecha.png)"        
     }, 600);
 }
 
@@ -82,23 +82,23 @@ function mainLoop() {
     if(tecla==="d"){
         x += 0.5;
         personaje.style.left = x + "%";
-        personaje.style.backgroundImage="url(../game/img/mario-quieto-derecha.png)"
+        personaje.style.backgroundImage="url(/Videoconsola_CSS/game/img/mario-quieto-derecha.png)"
         setTimeout(() => {
-            personaje.style.backgroundImage="url(../game/img/mario-andando-derecha.png)"
+            personaje.style.backgroundImage="url(/Videoconsola_CSS/game/img/mario-andando-derecha.png)"
         }, 50);
         setTimeout(() => {
-            personaje.style.backgroundImage="url(../game/img/mario-quieto-derecha.png)"
+            personaje.style.backgroundImage="url(/Videoconsola_CSS/game/img/mario-quieto-derecha.png)"
         }, 200);
         }
     if(tecla==="a"){
         x -= 0.5;
         personaje.style.left = x + "%";
-        personaje.style.backgroundImage="url(../game/img/mario-quieto-izquierda.png)"
+        personaje.style.backgroundImage="url(/Videoconsola_CSS/game/img/mario-quieto-izquierda.png)"
         setTimeout(() => {
-            personaje.style.backgroundImage="url(../game/img/mario-andando-izquierda.png)"
+            personaje.style.backgroundImage="url(/Videoconsola_CSS/game/img/mario-andando-izquierda.png)"
         }, 50);
         setTimeout(() => {
-            personaje.style.backgroundImage="url(../game/img/mario-quieto-izquierda.png)"
+            personaje.style.backgroundImage="url(/Videoconsola_CSS/game/img/mario-quieto-izquierda.png)"
         }, 200);
     }
     if(tecla==="w" && contador<1){
