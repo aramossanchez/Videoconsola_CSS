@@ -1,6 +1,6 @@
 var juego = document.getElementById("juego");
 
-// juego.style.display="none";
+juego.style.display="none";
 
 //CREACIÓN DEL FONDO
 juego.style.width="100%";
@@ -15,7 +15,7 @@ juego.style.backgroundRepeat="no-repeat";
 var personaje = document.createElement("div");
 personaje.style.height="20%";
 personaje.style.width="10%";
-personaje.style.backgroundColor="red";
+// personaje.style.backgroundColor="red";
 personaje.style.position="absolute";
 personaje.style.bottom="5%";
 personaje.style.left="42%";
