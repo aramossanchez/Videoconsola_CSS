@@ -10,7 +10,7 @@
     <div id="consola">
         <div id="parte-izquierda">
             <div id="cruceta-sombra">
-                <div id="cruceta" onclick="moverDerecha()"></div>
+                <div id="cruceta" onmousedown="darValor('d')" onmouseup="darValor('')"></div>
             </div>
             <div id="botones-izquierda">
                 <div id="start">
@@ -41,8 +41,8 @@
                 <div id="texto-power">POWER</div>
             </div>
             <div id="botones-derecha">
-                <div id="boton-b" class="boton-derecha" onclick="apretarBoton('boton-b')"></div>
-                <div id="boton-a" class="boton-derecha" onclick="apretarBoton('boton-a')"></div>
+                <div id="boton-b" class="boton-derecha" onclick="apretarBoton('boton-b')" onmousedown="darValor('q')" onmouseup="darValor('')"></div>
+                <div id="boton-a" class="boton-derecha" onclick="apretarBoton('boton-a')" onmousedown="darValor('e')" onmouseup="darValor('')"></div>
             </div>
             <div id="altavoz">
                 <div class="linea-altavoz"></div>

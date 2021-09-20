@@ -1,6 +1,6 @@
 var juego = document.getElementById("juego");
 
-juego.style.display="none";
+// juego.style.display="none";
 
 //CREACIÓN DEL FONDO
 juego.style.width="100%";
@@ -15,7 +15,7 @@ juego.style.backgroundRepeat="no-repeat";
 var personaje = document.createElement("div");
 personaje.style.height="20%";
 personaje.style.width="10%";
-// personaje.style.backgroundColor="red";
+personaje.style.backgroundColor="red";
 personaje.style.position="absolute";
 personaje.style.bottom="5%";
 personaje.style.left="42%";
@@ -120,6 +120,8 @@ const saltoHorizontal = (lado) =>{
 
 function mainLoop() {
     if(tecla==="d" && x < 86){
+        console.log(tecla);
+        console.log(contador);
         mirandoDerecha = true;
         x += 0.5;
         personaje.style.left = x + "%";
@@ -146,14 +148,25 @@ function mainLoop() {
     if(tecla==="w" && contador<1){
         saltar();
         contador++;
+        setTimeout(() => {
+            contador = 0;
+        }, 300);
     }
     if(tecla==="e" && contador<1){
         saltoHorizontal("derecha");
         contador++;
+        setTimeout(() => {
+            contador = 0;
+        }, 300);
     }
     if(tecla==="q" && contador<1){
         saltoHorizontal("izquierda");
         contador++;
+        setTimeout(() => {
+            contador = 0;
+        }, 300);
     }
 }
-
+const darValor = (letra) =>{
+    tecla = letra;
+}
