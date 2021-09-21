@@ -8,9 +8,15 @@
 </head>
 <body>
     <div id="consola">
+
         <div id="parte-izquierda">
             <div id="cruceta-sombra">
-                <div id="cruceta" onmousedown="darValor('d')" onmouseup="darValor('')"></div>
+                <div id="cruceta" onmousedown="darValor('d')" onmouseup="darValor('')">
+                    <div class="flecha-cruceta"></div>
+                    <div class="flecha-cruceta"></div>
+                    <div class="flecha-cruceta"></div>
+                    <div class="flecha-cruceta"></div>
+                </div>
             </div>
             <div id="botones-izquierda">
                 <div id="start">
@@ -23,26 +29,32 @@
                 </div>
             </div>
         </div>
+
         <div id="parte-central">
+            <div id="cartel-nintendo">Nintendo</div>
             <div id="marco-negro">
                 <div id="pantalla">
-                    <div id="juego">
-
-                    </div>
+                    <div id="juego"></div>
                     <video id="intro-game-boy">
                         <source src="./video/intro.webm" type="video/webm">
                     </video>
                 </div>
+                <div id="cartel-gameboy">
+                    <div>Game</div>
+                    <div>Boy</div>
+                    <div><span>ADVANCE</span></div>
+                </div>
             </div>
         </div>
+
         <div id="parte-derecha">
             <div id="power">
                 <div id="led" class="led-apagado"></div>
                 <div id="texto-power">POWER</div>
             </div>
             <div id="botones-derecha">
-                <div id="boton-b" class="boton-derecha" onclick="apretarBoton('boton-b')" onmousedown="darValor('q')" onmouseup="darValor('')"></div>
-                <div id="boton-a" class="boton-derecha" onclick="apretarBoton('boton-a')" onmousedown="darValor('e')" onmouseup="darValor('')"></div>
+                <div id="boton-b" class="boton-derecha" onclick="apretarBoton('boton-b')" onmousedown="darValor('q')" onmouseup="darValor('')">B</div>
+                <div id="boton-a" class="boton-derecha" onclick="apretarBoton('boton-a')" onmousedown="darValor('e')" onmouseup="darValor('')">A</div>
             </div>
             <div id="altavoz">
                 <div class="linea-altavoz"></div>
@@ -52,8 +64,19 @@
                 <div class="linea-altavoz"></div>
             </div>
         </div>
+
         <div id="parte-abajo">
             <div id="boton-encendido" onclick="encenderConsola(), botonEncendido(), arrancarJuego()"></div>
+        </div>
+
+        <div id="parte-lateral-izquierda">
+        </div>
+        <div id="parte-lateral-derecha">
+        </div>
+
+        <div id="botones-arriba">
+            <div id="boton-l"></div>
+            <div id="boton-r"></div>
         </div>
     </div>
     <script src="./js/script.js"></script>
