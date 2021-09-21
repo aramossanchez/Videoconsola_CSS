@@ -6,7 +6,7 @@ var juego = document.getElementById("juego");
 juego.style.width="100%";
 juego.style.height="100%";
 juego.style.position="relative";
-juego.style.backgroundColor="green";
+// juego.style.backgroundColor="green";
 juego.style.backgroundImage="url(/Videoconsola_CSS/game/img/fondo-mario.png)"
 juego.style.backgroundSize="contain";
 juego.style.backgroundRepeat="no-repeat";
@@ -43,11 +43,10 @@ setInterval(() => {
     juego.appendChild(enemigoDerecha);
     enemigoDerechaExiste = true;
     console.log(document.getElementById("enemigoDerecha"));
-}, 4000);
+}, 3900);
 
 
 var enemigoIzquierdaExiste = false;
-setTimeout(() => {
     setInterval(() => {
         //CREACION DEL ENEMIGO IZQUIERDA
         var enemigoIzquierda = document.createElement("div");
@@ -65,7 +64,6 @@ setTimeout(() => {
         enemigoIzquierdaExiste = true;
         console.log(document.getElementById("enemigoIzquierda"));
     }, 4000);
-}, 500);
 
 
 //MOVIMIENTO DEL PERSONAJE
@@ -74,7 +72,7 @@ var y = 5;
 var mirandoDerecha = true;
 var tecla = undefined;
 
-//MOVIMIENTO DEL ENEMIGO DERECHA
+// //MOVIMIENTO DEL ENEMIGO DERECHA
 var xEDer = 7.5;
 var yEDer = 75;
 
@@ -96,13 +94,13 @@ setInterval( personajeLoop , 10);
     setInterval(() => {
         if (enemigoDerechaExiste) {
             var enemigoCreadoDerecha = document.getElementById("enemigoDerecha");
-            enemigoLoop(enemigoCreadoDerecha);
+            enemigoLoopDerecha(enemigoCreadoDerecha);
         }
     }, 10);
     setInterval(() => {
         if (enemigoIzquierdaExiste) {
             var enemigoCreadoIzquierda = document.getElementById("enemigoIzquierda");
-            enemigoLoop(enemigoCreadoIzquierda);
+            enemigoLoopIzquierda(enemigoCreadoIzquierda);
         }
     }, 10);
 setInterval( deathLoop , 10);
@@ -236,7 +234,7 @@ function personajeLoop() {
 const darValor = (letra) =>{
     tecla = letra;
 }
-function enemigoLoop(enemigoCreadoDerecha) {
+function enemigoLoopDerecha(enemigoCreadoDerecha) {
     if (yEDer > 5 ) {
         yEDer -= 1;
         enemigoCreadoDerecha.style.bottom = yEDer + "%";        
@@ -252,29 +250,29 @@ function enemigoLoop(enemigoCreadoDerecha) {
         yEDer = 75;
     }
 }
-// function enemigoLoop(enemigoCreadoIzquierda) {
-//     if (yEIzq > 5 ) {
-//         yEIzq -= 1;
-//         enemigoCreadoIzquierda.style.bottom = yEIzq + "%";        
-//     }
-//     if (xEIzq > 10) {
-//         xEIzq -= 0.25;
-//         enemigoCreadoIzquierda.style.left = xEIzq + "%";
-//     }else{
-//         juego.removeChild(enemigoCreadoIzquierda);
-//         enemigoIzquierdaExiste = false;
-//         puntuacion++;
-//         xEIzq = 84;
-//         yEIzq = 75;
-//     }
-// }
+function enemigoLoopIzquierda(enemigoCreadoIzquierda) {
+    if (yEIzq > 5 ) {
+        yEIzq -= 1;
+        enemigoCreadoIzquierda.style.bottom = yEIzq + "%";        
+    }
+    if (xEIzq > 10) {
+        xEIzq -= 0.25;
+        enemigoCreadoIzquierda.style.left = xEIzq + "%";
+    }if( xEIzq == 10){
+        juego.removeChild(enemigoCreadoIzquierda);
+        enemigoIzquierdaExiste = false;
+        puntuacion++;
+        xEIzq = 84;
+        yEIzq = 75;
+    }
+}
 function deathLoop() {   
     if (yEDer == y && xEDer == x) {
         juego.style.display="none";
         console.log(xEDer + "---" + x);
     }
-    // if (yEIzq == y && xEIzq == x) {
-    //     juego.style.display="none";
-    //     console.log(xEIzq + "---" + x);
-    // }
+    if (yEIzq == y && xEIzq == x) {
+        juego.style.display="none";
+        console.log(xEIzq + "---" + x);
+    }
 }
