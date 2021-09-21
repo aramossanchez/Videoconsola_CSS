@@ -3,7 +3,7 @@
     --color-brillo-consola: #1f64d3;
     --color-cartel-consola: #0f47a0;
     --boton: #DADBDD;
-    --letra-boton: rgb(184, 184, 184);
+    --letra-boton: rgb(197, 197, 197);
 }
 @import url('https://fonts.googleapis.com/css2?family=Six+Caps&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
@@ -58,25 +58,48 @@ body{
     height: 23%;
     position: relative;
     width: 50%;
-    clip-path: polygon(25% 0%, 0% 25%, 30% 50%, 0% 75%, 25% 100%, 50% 70%, 75% 100%, 100% 75%, 70% 50%, 100% 25%, 75% 0%, 50% 30%);
-    transform: rotate(45deg);
+    clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    transform: scale(1.1) rotate(45deg);
 }
 #cruceta{
     background-color: var(--boton);
     height: 97%;
     position: relative;
     width: 97%;
-    clip-path: polygon(25% 0%, 0% 25%, 30% 50%, 0% 75%, 25% 100%, 50% 70%, 75% 100%, 100% 75%, 70% 50%, 100% 25%, 75% 0%, 50% 30%);
+    clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
 }
 .flecha-cruceta{
     position: absolute;
-    width: 50%;
-    height: 50%;
+    width: 25%;
+    height: 25%;
     background-color: var(--letra-boton);
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    transform: rotate(-45deg);
+    cursor: pointer;
+}
+
+#flecha-arriba{
+    left: 10%;
+    top: 10%;
+}
+#flecha-derecha{
+    left: 65%;
+    top: 10%;
+    transform: rotate(45deg);
+}
+#flecha-abajo{
+    left: 65%;
+    top: 65%;
+    transform: rotate(-225deg);
+}
+#flecha-izquierda{
+    left: 10%;
+    top: 65%;
+    transform: rotate(-135deg);
 }
 #botones-izquierda{
     margin: 0 0 3.5em 1.5em;
@@ -359,4 +382,15 @@ body{
     height: 10%;
     border-radius: 150px 157px 356px 0px / 78px 33px 138px 0px;
     transform: rotate(-165deg);
+}
+
+@media (max-width: 730px){
+    body{
+        font-size: 0.75em;
+    }
+}
+@media (max-width: 530px){
+    body{
+        font-size: 0.5em;
+    }
 }

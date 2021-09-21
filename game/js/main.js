@@ -1,6 +1,6 @@
 var juego = document.getElementById("juego");
 
-juego.style.display="none";
+// juego.style.display="none";
 
 //CREACIÓN DEL FONDO
 juego.style.width="100%";
@@ -25,10 +25,62 @@ personaje.style.backgroundRepeat="no-repeat";
 
 juego.appendChild(personaje);
 
+var enemigoDerechaExiste = false;
+
+setInterval(() => {
+    //CREACION DEL ENEMIGO DERECHA
+    var enemigoDerecha = document.createElement("div");
+    enemigoDerecha.style.height="10.75%";
+    enemigoDerecha.style.width="8.75%";
+    // enemigoDerecha.style.backgroundColor="red";
+    enemigoDerecha.style.position="absolute";
+    enemigoDerecha.style.bottom="75%";
+    enemigoDerecha.style.left="7.5%";
+    enemigoDerecha.style.backgroundImage="url(/Videoconsola_CSS/game/img/enemigo-derecha.png)"
+    enemigoDerecha.style.backgroundSize="cover";
+    enemigoDerecha.style.backgroundRepeat="no-repeat";
+    enemigoDerecha.setAttribute("id", "enemigoDerecha");
+    juego.appendChild(enemigoDerecha);
+    enemigoDerechaExiste = true;
+    console.log(document.getElementById("enemigoDerecha"));
+}, 4000);
+
+
+var enemigoIzquierdaExiste = false;
+setTimeout(() => {
+    setInterval(() => {
+        //CREACION DEL ENEMIGO IZQUIERDA
+        var enemigoIzquierda = document.createElement("div");
+        enemigoIzquierda.style.height="10.75%";
+        enemigoIzquierda.style.width="8.75%";
+        // enemigoIzquierda.style.backgroundColor="red";
+        enemigoIzquierda.style.position="absolute";
+        enemigoIzquierda.style.bottom="75%";
+        enemigoIzquierda.style.left="84%";
+        enemigoIzquierda.style.backgroundImage="url(/Videoconsola_CSS/game/img/enemigo-izquierda.png)"
+        enemigoIzquierda.style.backgroundSize="cover";
+        enemigoIzquierda.style.backgroundRepeat="no-repeat";
+        enemigoIzquierda.setAttribute("id", "enemigoIzquierda");
+        juego.appendChild(enemigoIzquierda);
+        enemigoIzquierdaExiste = true;
+        console.log(document.getElementById("enemigoIzquierda"));
+    }, 4000);
+}, 500);
+
+
 //MOVIMIENTO DEL PERSONAJE
 var x = 42;
+var y = 5;
 var mirandoDerecha = true;
 var tecla = undefined;
+
+//MOVIMIENTO DEL ENEMIGO DERECHA
+var xEDer = 7.5;
+var yEDer = 75;
+
+//MOVIMIENTO DEL ENEMIGO IZQUIERDA
+var xEIzq = 84;
+var yEIzq = 75;
 
 
 document.onkeydown = function (e) {
@@ -40,9 +92,20 @@ document.onkeyup = function (e) {
     contador = 0;
 };
 
-console.log(tecla);
-
-setInterval( mainLoop , 10);
+setInterval( personajeLoop , 10);
+    setInterval(() => {
+        if (enemigoDerechaExiste) {
+            var enemigoCreadoDerecha = document.getElementById("enemigoDerecha");
+            enemigoLoop(enemigoCreadoDerecha);
+        }
+    }, 10);
+    setInterval(() => {
+        if (enemigoIzquierdaExiste) {
+            var enemigoCreadoIzquierda = document.getElementById("enemigoIzquierda");
+            enemigoLoop(enemigoCreadoIzquierda);
+        }
+    }, 10);
+setInterval( deathLoop , 10);
 
 
 var contador = 0;
@@ -57,9 +120,11 @@ const saltar = () =>{
     personaje.style.transition="0.3s"
     personaje.style.backgroundSize="contain";
     personaje.style.backgroundRepeat="no-repeat";
-    personaje.style.bottom = "35%";
+    y += 30;
+    personaje.style.bottom = y + "%";
     setTimeout(() => {
-        personaje.style.bottom = "5%";
+        y -= 30;
+        personaje.style.bottom = y + "%";
     }, 400);
     setTimeout(() => {
         personaje.style.transition="0s";
@@ -74,9 +139,9 @@ const saltar = () =>{
 
 const saltoHorizontal = (lado) =>{
     personaje.style.transition="0.3s"
-    personaje.style.bottom = "35%";
+    y += 30
+    personaje.style.bottom = y + "%";
     if (lado === "derecha") {
-        console.log(x);
         mirandoDerecha = true;
         personaje.style.backgroundImage="url(/Videoconsola_CSS/game/img/mario-volando-derecha.png)";
         if(x < 86){
@@ -105,7 +170,8 @@ const saltoHorizontal = (lado) =>{
         }
     }
     setTimeout(() => {
-        personaje.style.bottom = "5%";
+        y -= 30;
+        personaje.style.bottom = y + "%";
     }, 400);
     setTimeout(() => {
         personaje.style.transition="0s";
@@ -118,10 +184,10 @@ const saltoHorizontal = (lado) =>{
     }, 600);
 }
 
-function mainLoop() {
+var puntuacion = 0;
+
+function personajeLoop() {
     if(tecla==="d" && x < 86){
-        console.log(tecla);
-        console.log(contador);
         mirandoDerecha = true;
         x += 0.5;
         personaje.style.left = x + "%";
@@ -169,4 +235,46 @@ function mainLoop() {
 }
 const darValor = (letra) =>{
     tecla = letra;
+}
+function enemigoLoop(enemigoCreadoDerecha) {
+    if (yEDer > 5 ) {
+        yEDer -= 1;
+        enemigoCreadoDerecha.style.bottom = yEDer + "%";        
+    }
+    if (xEDer < 91) {
+        xEDer += 0.25;
+        enemigoCreadoDerecha.style.left = xEDer + "%";
+    }else{
+        juego.removeChild(enemigoCreadoDerecha);
+        enemigoDerechaExiste = false;
+        puntuacion++;
+        xEDer = 7.5;
+        yEDer = 75;
+    }
+}
+// function enemigoLoop(enemigoCreadoIzquierda) {
+//     if (yEIzq > 5 ) {
+//         yEIzq -= 1;
+//         enemigoCreadoIzquierda.style.bottom = yEIzq + "%";        
+//     }
+//     if (xEIzq > 10) {
+//         xEIzq -= 0.25;
+//         enemigoCreadoIzquierda.style.left = xEIzq + "%";
+//     }else{
+//         juego.removeChild(enemigoCreadoIzquierda);
+//         enemigoIzquierdaExiste = false;
+//         puntuacion++;
+//         xEIzq = 84;
+//         yEIzq = 75;
+//     }
+// }
+function deathLoop() {   
+    if (yEDer == y && xEDer == x) {
+        juego.style.display="none";
+        console.log(xEDer + "---" + x);
+    }
+    // if (yEIzq == y && xEIzq == x) {
+    //     juego.style.display="none";
+    //     console.log(xEIzq + "---" + x);
+    // }
 }
