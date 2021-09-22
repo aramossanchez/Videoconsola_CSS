@@ -13,6 +13,8 @@ let game = document.getElementById("juego");
 let boton_encendido = document.getElementById("boton-encendido");
 let pantalla_inicio_juego = document.getElementById("pantalla-inicio-juego");
 var consola = document.getElementById("consola");
+var pantallaDerrota = document.getElementById("pantalla-derrota");
+var Puntuacion = document.getElementById("puntuacion");
 
 let Blanco = document.getElementById("Blanco");
 let Amarillo = document.getElementById("Amarillo");
@@ -86,6 +88,9 @@ const encenderConsola = () =>{
         led.classList.add("led-apagado");
         pantalla.style.backgroundColor="rgb(156, 156, 156)";
         intro_game_boy.style.display="none";
+        pantalla_inicio_juego.style.display="none";
+        pantallaDerrota.style.display="none";
+        Puntuacion.style.display="none";
         juego.style.display="none";
     }
 }
