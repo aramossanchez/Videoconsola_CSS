@@ -92,6 +92,7 @@ const encenderConsola = () =>{
         pantallaDerrota.style.display="none";
         Puntuacion.style.display="none";
         juego.style.display="none";
+        pantalla_inicio_juego.pause();
     }
 }
 
