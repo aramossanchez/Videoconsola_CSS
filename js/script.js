@@ -1,3 +1,5 @@
+// CREADO POR: Armando Ramos
+// VERSION: 1.0 
 /*
 ************************************************************************************************
 INPUT
@@ -92,7 +94,6 @@ const encenderConsola = () =>{
         pantallaDerrota.style.display="none";
         Puntuacion.style.display="none";
         juego.style.display="none";
-        pantalla_inicio_juego.pause();
     }
 }
 
