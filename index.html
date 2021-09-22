@@ -7,7 +7,27 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-    <div id="consola">
+
+
+    <div id="selector-color">
+        <p>👾 Elige el color de la consola 👾</p>
+        <form onclick="CambiarColor(event.path[0].id)">
+            <input type="radio" name="color-consola" id="Blanco">
+            <label for="Blanco">Blanco</label>
+            <input type="radio" name="color-consola" id="Amarillo">
+            <label for="Amarillo">Amarillo</label>
+            <input type="radio" name="color-consola" id="Rojo">
+            <label for="Rojo">Rojo</label>
+            <input type="radio" name="color-consola" id="Verde">
+            <label for="Verde">Verde</label>
+            <input type="radio" name="color-consola" id="Azul" checked>
+            <label for="Azul">Azul</label>
+        </form>
+    </div>
+
+
+    <div id="consola" class="azul">
+
 
         <div id="parte-izquierda">
             <div id="cruceta-sombra">
@@ -21,7 +41,7 @@
             <div id="botones-izquierda">
                 <div id="start">
                     <div id="texto-boton-start">START</div>
-                    <div id="boton-start-redondo" onclick="apretarBoton('boton-start-redondo')"></div>
+                    <div id="boton-start-redondo" onclick="apretarBoton('boton-start-redondo'), IniciarJuego(), ReiniciarPartida()"></div>
                 </div>
                 <div id="select">
                     <div id="texto-boton-select" >SELECT</div>
@@ -30,14 +50,23 @@
             </div>
         </div>
 
+
         <div id="parte-central">
             <div id="cartel-nintendo">Nintendo</div>
             <div id="marco-negro">
                 <div id="pantalla">
                     <div id="juego"></div>
-                    <video id="intro-game-boy">
+                    <video id="intro-game-boy" preload = "auto">
                         <source src="./video/intro.webm" type="video/webm">
                     </video>
+                    <video id="pantalla-inicio-juego" preload = "auto" loop>
+                        <source src="./video/pantalla-inicio-juego.webm" type="video/webm">
+                    </video>
+                    <div id="puntuacion"></div>
+                    <div id="pantalla-derrota">
+                        <p>GAME OVER</p>
+                         <span>Nueva partida --> Presiona START</span>
+                    </div>
                 </div>
                 <div id="cartel-gameboy">
                     <div>Game</div>
@@ -46,6 +75,7 @@
                 </div>
             </div>
         </div>
+
 
         <div id="parte-derecha">
             <div id="power">
@@ -65,14 +95,17 @@
             </div>
         </div>
 
+
         <div id="parte-abajo">
             <div id="boton-encendido" onclick="encenderConsola(), botonEncendido(), arrancarJuego()"></div>
         </div>
+
 
         <div id="parte-lateral-izquierda">
         </div>
         <div id="parte-lateral-derecha">
         </div>
+
 
         <div id="botones-arriba">
             <div id="boton-l"></div>

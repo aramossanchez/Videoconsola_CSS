@@ -1,12 +1,73 @@
-var juego = document.getElementById("juego");
+/*
+************************************************************************************************
+INPUT
+************************************************************************************************
+*/
 
-// juego.style.display="none";
+//OBTENEMOS ELEMENTOS DEL DOM
+
+var juego = document.getElementById("juego");
+var pantallaDerrota = document.getElementById("pantalla-derrota");
+var Puntuacion = document.getElementById("puntuacion");
+
+//VARIABLES PARA INDICAR QUE LOS ENEMIGOS NO EXISTEN
+
+var enemigoDerechaExiste = false;
+var enemigoIzquierdaExiste = false;
+
+//VARIABLE PARA SABER SI ESTAMOS EN LA PANTALLA DE DERROTA
+
+var pantallaDerrotaExiste = false;
+
+//MOVIMIENTO DEL PERSONAJE
+
+var x = 42;
+var y = 5;
+var mirandoDerecha = true;
+var tecla = undefined;
+
+//OBTENEMOS SONIDO DEL PERSONAJE
+
+const salto = new Audio('/Videoconsola_CSS/audio/mario-bros-jump.mp3');
+const gameOver = new Audio('/Videoconsola_CSS/audio/game-over.mp3');
+
+// //MOVIMIENTO DEL ENEMIGO DERECHA
+
+var xEDer = 7.5;
+var yEDer = 75;
+
+//MOVIMIENTO DEL ENEMIGO IZQUIERDA
+
+var xEIzq = 84;
+var yEIzq = 75;
+
+//OBTENEMOS SONIDO DEL ENEMIGO
+
+const muerteEnemigo = new Audio('/Videoconsola_CSS/audio/enemigo-muere.mp3');
+
+//CONTADOR PARA EVITAR SALTAR EN BUCLE ANTES DE QUE ACABE EL SALTO ANTERIOR
+
+var contador = 0;
+
+
+//CONTADOR PARA SABER CUANTOS ENEMIGOS MUERTOS HAY
+var puntuacion = 0;
+
+/*
+************************************************************************************************
+PROCESO
+************************************************************************************************
+*/
+
+
+//DESACTIVAMOS EL JUEGO
+juego.style.display="none";
 
 //CREACIÓN DEL FONDO
 juego.style.width="100%";
 juego.style.height="100%";
 juego.style.position="relative";
-// juego.style.backgroundColor="green";
+juego.style.backgroundColor="green";
 juego.style.backgroundImage="url(/Videoconsola_CSS/game/img/fondo-mario.png)"
 juego.style.backgroundSize="contain";
 juego.style.backgroundRepeat="no-repeat";
@@ -25,30 +86,31 @@ personaje.style.backgroundRepeat="no-repeat";
 
 juego.appendChild(personaje);
 
-var enemigoDerechaExiste = false;
 
+//CREACION DEL ENEMIGO DERECHA (SOLO LO EMPIEZA A CREAR EN BUCLE SI EL JUEGO ESTÁ ACTIVO)
 setInterval(() => {
-    //CREACION DEL ENEMIGO DERECHA
-    var enemigoDerecha = document.createElement("div");
-    enemigoDerecha.style.height="10.75%";
-    enemigoDerecha.style.width="8.75%";
-    // enemigoDerecha.style.backgroundColor="red";
-    enemigoDerecha.style.position="absolute";
-    enemigoDerecha.style.bottom="75%";
-    enemigoDerecha.style.left="7.5%";
-    enemigoDerecha.style.backgroundImage="url(/Videoconsola_CSS/game/img/enemigo-derecha.png)"
-    enemigoDerecha.style.backgroundSize="cover";
-    enemigoDerecha.style.backgroundRepeat="no-repeat";
-    enemigoDerecha.setAttribute("id", "enemigoDerecha");
-    juego.appendChild(enemigoDerecha);
-    enemigoDerechaExiste = true;
-    console.log(document.getElementById("enemigoDerecha"));
-}, 3900);
+    if (juego.style.display == "block") {
+        var enemigoDerecha = document.createElement("div");
+        enemigoDerecha.style.height="10.75%";
+        enemigoDerecha.style.width="8.75%";
+        // enemigoDerecha.style.backgroundColor="red";
+        enemigoDerecha.style.position="absolute";
+        enemigoDerecha.style.bottom="75%";
+        enemigoDerecha.style.left="7.5%";
+        enemigoDerecha.style.backgroundImage="url(/Videoconsola_CSS/game/img/enemigo-derecha.png)"
+        enemigoDerecha.style.backgroundSize="cover";
+        enemigoDerecha.style.backgroundRepeat="no-repeat";
+        enemigoDerecha.setAttribute("id", "enemigoDerecha");
+        juego.appendChild(enemigoDerecha);
+        enemigoDerechaExiste = true;
+        console.log(document.getElementById("enemigoDerecha"));
+    }    
+}, 3500);
 
 
-var enemigoIzquierdaExiste = false;
-    setInterval(() => {
-        //CREACION DEL ENEMIGO IZQUIERDA
+//CREACION DEL ENEMIGO IZQUIERDA (SOLO LO EMPIEZA A CREAR EN BUCLE SI EL JUEGO ESTÁ ACTIVO)
+setInterval(() => {
+    if (juego.style.display == "block") {
         var enemigoIzquierda = document.createElement("div");
         enemigoIzquierda.style.height="10.75%";
         enemigoIzquierda.style.width="8.75%";
@@ -63,23 +125,13 @@ var enemigoIzquierdaExiste = false;
         juego.appendChild(enemigoIzquierda);
         enemigoIzquierdaExiste = true;
         console.log(document.getElementById("enemigoIzquierda"));
-    }, 4000);
+    }
+}, 4000);
 
-
-//MOVIMIENTO DEL PERSONAJE
-var x = 42;
-var y = 5;
-var mirandoDerecha = true;
-var tecla = undefined;
-
-// //MOVIMIENTO DEL ENEMIGO DERECHA
-var xEDer = 7.5;
-var yEDer = 75;
-
-//MOVIMIENTO DEL ENEMIGO IZQUIERDA
-var xEIzq = 84;
-var yEIzq = 75;
-
+//CREADO PARA FUNCIONAMIENTO CON TECLADO. HECHO ASÍ PARA EVITAR EL DELAY QUE HABÍA CON EL MÉTODO ANTERIOR
+//GUARDAMOS EN UNA VARIABLE LA TECLA QUE HA SIDO PULSADA. EL PROGRAMA SEGUIRÁ Y ACCEDERÁ AL BUCLE DE MOVIMIENTO, QUE MIRA
+//QUE TECLA HAY GUARDADA EN LA VARIABLE Y EJECUTA LA ACCIÓN SEGÚN CORRESPONDA.
+//CUANDO SUELTAS LA TECLA PULSADA LA VARIABLE SE QUEDA VACÍA, Y EL BUCLE NO EJECUTA NINGUNA ACCIÓN.
 
 document.onkeydown = function (e) {
     tecla=e.key;
@@ -89,6 +141,8 @@ document.onkeyup = function (e) {
     tecla = undefined;
     contador = 0;
 };
+
+//DECLARAMOS CONDICIONES PARA QUE SE EJECUTEN LOS BUCLES: BUCLE DE PERSONAJE, BUCLE DE ENEMIGOS Y BUCLE DE MUERTE
 
 setInterval( personajeLoop , 10);
     setInterval(() => {
@@ -103,10 +157,18 @@ setInterval( personajeLoop , 10);
             enemigoLoopIzquierda(enemigoCreadoIzquierda);
         }
     }, 10);
-setInterval( deathLoop , 10);
+setInterval(() => {
+    if (enemigoDerechaExiste) {
+        var enemigoCreadoDerecha = document.getElementById("enemigoDerecha");
+    }
+    if (enemigoIzquierdaExiste) {
+        var enemigoCreadoIzquierda = document.getElementById("enemigoIzquierda");
+    }
+    deathLoop(enemigoCreadoDerecha, enemigoCreadoIzquierda);
+}, 10);
 
 
-var contador = 0;
+//FUNCIÓN SALTAR EN VERTICAL
 
 const saltar = () =>{
     if(mirandoDerecha){
@@ -115,6 +177,7 @@ const saltar = () =>{
     else{
         personaje.style.backgroundImage="url(/Videoconsola_CSS/game/img/mario-saltando-izquierda.png)"
     }
+    salto.play();
     personaje.style.transition="0.3s"
     personaje.style.backgroundSize="contain";
     personaje.style.backgroundRepeat="no-repeat";
@@ -135,7 +198,10 @@ const saltar = () =>{
     }, 600);
 }
 
+//FUNCION SALTAR EN HORIZONTAL
+
 const saltoHorizontal = (lado) =>{
+    salto.play();
     personaje.style.transition="0.3s"
     y += 30
     personaje.style.bottom = y + "%";
@@ -182,7 +248,7 @@ const saltoHorizontal = (lado) =>{
     }, 600);
 }
 
-var puntuacion = 0;
+//MOVIMIENTOS DEL PERSONAJE
 
 function personajeLoop() {
     if(tecla==="d" && x < 86){
@@ -231,9 +297,15 @@ function personajeLoop() {
         }, 300);
     }
 }
+
+//FUNCIÓN CREADA PARA QUE FUNCIONEN LOS BOTONES DE LA CONSOLA
+
 const darValor = (letra) =>{
     tecla = letra;
 }
+
+//FUNCIONES QUE DESCRIBEN EL COMPORTAMIENTO DE LOS ENEMIGOS
+
 function enemigoLoopDerecha(enemigoCreadoDerecha) {
     if (yEDer > 5 ) {
         yEDer -= 1;
@@ -244,35 +316,66 @@ function enemigoLoopDerecha(enemigoCreadoDerecha) {
         enemigoCreadoDerecha.style.left = xEDer + "%";
     }else{
         juego.removeChild(enemigoCreadoDerecha);
+        muerteEnemigo.play();
         enemigoDerechaExiste = false;
         puntuacion++;
         xEDer = 7.5;
         yEDer = 75;
+        Puntuacion.innerHTML = "Puntuación: " + puntuacion;
     }
 }
+
 function enemigoLoopIzquierda(enemigoCreadoIzquierda) {
     if (yEIzq > 5 ) {
         yEIzq -= 1;
         enemigoCreadoIzquierda.style.bottom = yEIzq + "%";        
     }
-    if (xEIzq > 10) {
+    if (xEIzq > 3) {
         xEIzq -= 0.25;
         enemigoCreadoIzquierda.style.left = xEIzq + "%";
-    }if( xEIzq == 10){
+    }if( xEIzq == 3){
         juego.removeChild(enemigoCreadoIzquierda);
+        muerteEnemigo.play();
         enemigoIzquierdaExiste = false;
         puntuacion++;
         xEIzq = 84;
         yEIzq = 75;
+        Puntuacion.innerHTML = "Puntuación: " + puntuacion;
     }
 }
-function deathLoop() {   
+
+//FUNCIÓN QUE DESCRIBE LA MUERTE DEL PERSONAJE
+
+function deathLoop(enemigoCreadoDerecha, enemigoCreadoIzquierda) {   
     if (yEDer == y && xEDer == x) {
+        gameOver.play();
         juego.style.display="none";
-        console.log(xEDer + "---" + x);
+        pantalla.style.backgroundColor="none";
+        pantallaDerrota.style.display="flex";
+        pantallaDerrotaExiste = true;
+        juego.removeChild(enemigoCreadoDerecha);
+        puntuacion = 0;
+        Puntuacion.innerHTML = "";
     }
     if (yEIzq == y && xEIzq == x) {
+        gameOver.play();
         juego.style.display="none";
-        console.log(xEIzq + "---" + x);
+        pantalla.style.backgroundColor="none";
+        pantallaDerrota.style.display="flex";
+        pantallaDerrotaExiste = true;
+        juego.removeChild(enemigoCreadoIzquierda);
+        puntuacion = 0;
+        Puntuacion.innerHTML = "";
+    }
+}
+
+//FUNCION PARA REINICIAR LA PARTIDA TRAS APARECER LA PANTALLA DE GAME OVER
+
+const ReiniciarPartida = () => {
+    if(pantallaDerrotaExiste){
+        gameOver.pause();
+        pantallaDerrota.style.display="none";
+        tecla = "";
+        juego.style.display="block";
     }
 }

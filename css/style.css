@@ -1,13 +1,40 @@
+/* FUENTES IMPORTADAS PARA BOTONES, CARTELES Y PUNTUACIÓN*/
+@import url('https://fonts.googleapis.com/css2?family=Six+Caps&family=Stick+No+Bills:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* COLORES DE LA CONSOLA */
 :root {
-    --color-consola: #347ef5;
-    --color-brillo-consola: #1f64d3;
-    --color-cartel-consola: #0f47a0;
     --boton: #DADBDD;
     --letra-boton: rgb(197, 197, 197);
 }
-@import url('https://fonts.googleapis.com/css2?family=Six+Caps&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
+.blanco{
+    --color-consola: #cecece;
+    --color-brillo-consola: #a1a1a1;
+    --color-cartel-consola: #5e5e5e;
+}
+.amarillo{
+    --color-consola: #d8f534;
+    --color-brillo-consola: #d0d31f;
+    --color-cartel-consola: #9da00f;
+}
+.rojo{    
+    --color-consola: #f53434;
+    --color-brillo-consola: #d31f1f;
+    --color-cartel-consola: #a00f0f;
+}
+.verde{
+    --color-consola: #44f534;
+    --color-brillo-consola: #1fd32e;
+    --color-cartel-consola: #0fa00f;
+}
+.azul{
+    --color-consola: #136dff;
+    --color-brillo-consola: #1659c5;
+    --color-cartel-consola: #0f47a0;
+}
+
 *{
     padding: 0;
     margin: 0;
@@ -19,6 +46,36 @@ body{
     align-items: center;
     justify-content: center;
     height: 90vh;
+}
+#selector-color{
+    position: fixed;
+    top:-15%;
+    text-align: center;
+    background-color: white;
+    padding:1.5em 1.5em 2.5em 1.5em;
+    border-radius: 0px 0px 50px 50px;
+    border: 3px solid black;
+    font-family: 'Press Start 2P';
+    transition: 0.3s;
+}
+#selector-color:hover{
+    top:0;
+}
+#selector-color p{
+    margin-bottom: 2em;
+}
+input[type="radio"]{
+    display: none;
+}
+input:checked + label {
+    color: white;
+    background-color: black;
+}
+label{
+    padding: 0.5em;
+}
+label:hover {
+    cursor: pointer;
 }
 #consola{
     background: linear-gradient(90deg, var(--color-brillo-consola) 0%, var(--color-consola) 50%, var(--color-brillo-consola) 100%);
@@ -101,11 +158,16 @@ body{
     top: 65%;
     transform: rotate(-135deg);
 }
+/*
+*****************************BOTONES START Y SELECT*****************************
+*****************************BOTONES START Y SELECT*****************************
+*****************************BOTONES START Y SELECT*****************************
+*/
 #botones-izquierda{
     margin: 0 0 3.5em 1.5em;
     width: 65%;
     height: 20%;
-    font-family: 'Six Caps', sans-serif;
+    font-family: 'Stick No Bills', sans-serif;
     font-weight: bold;
     color: var(--color-brillo-consola);
     text-shadow: 1px 1px 0px rgb(0, 0, 0);
@@ -130,7 +192,7 @@ body{
 }
 #texto-boton-start{
     position: absolute;
-    left: 15%;
+    left: 23%;
     top: 18%;
 }
 #boton-start-redondo, #boton-select-redondo{
@@ -146,7 +208,7 @@ body{
 }
 #texto-boton-select{
     position: absolute;
-    left: 12%;
+    left: 20%;
     top: 18%;
     font-size:0.95em;
 }
@@ -167,8 +229,7 @@ body{
     justify-content: center;
 }
 #cartel-nintendo{
-    letter-spacing: 0.1em;
-    font-size: 0.9em;
+    font-size: 0.8em;
     text-align: center;
     border: 3px solid var(--color-cartel-consola);
     color: var(--color-cartel-consola);
@@ -195,7 +256,50 @@ body{
     background-color: rgb(156, 156, 156);
     margin-top:10%;
     border: 7px solid black;
+    position: relative;
 }
+#puntuacion{
+    position: absolute;
+    top: 4%;
+    left: 4%;
+    text-align: center;
+    font-family: 'Press Start 2P';
+    color: white;
+}
+#pantalla-derrota{
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(59, 55, 55);
+    font-family: 'Press Start 2P';
+    color: white;
+    font-size: 1.5em;
+    text-align: center;
+}
+#pantalla-derrota span{
+    margin-top: 20%;
+    font-size: 0.30em;
+    animation: pulse 1.25s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1.1);
+  }
+  50%{
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+/*
+*****************************VÍDEOS*****************************
+*****************************VÍDEOS*****************************
+*****************************VÍDEOS*****************************
+*/
 #pantalla video{
     width: 100%;
     height: 100%;
@@ -203,6 +307,14 @@ body{
 #intro-game-boy{
     display: none;
 }
+#pantalla-inicio-juego{
+    display: none;
+}
+/*
+*****************************CARTEL GAMEBOYADVANCE*****************************
+*****************************CARTEL GAMEBOYADVANCE*****************************
+*****************************CARTEL GAMEBOYADVANCE*****************************
+*/
 #cartel-gameboy{
     display: flex;
     flex-direction: row;
@@ -233,11 +345,16 @@ body{
 #parte-derecha{
     width: 25%;
     height: 22em;
-    font-family: 'Six Caps', sans-serif;
+    font-family: 'Stick No Bills', sans-serif;
     font-weight: bold;
     color: var(--color-brillo-consola);
     text-shadow: 1px 1px 0px rgb(0, 0, 0);
 }
+/*
+*****************************LED Y POWER*****************************
+*****************************LED Y POWER*****************************
+*****************************LED Y POWER*****************************
+*/
 #power{
     width: 50%;
     height: 20%;
@@ -265,6 +382,12 @@ body{
 #texto-power{
     margin-left: 0.5em;
 }
+
+/*
+*****************************BOTONES B Y A*****************************
+*****************************BOTONES B Y A*****************************
+*****************************BOTONES B Y A*****************************
+*/
 #botones-derecha{
     width: 100%;
     height: 42%;
@@ -294,6 +417,11 @@ body{
     text-align: center;
     padding: 0.5em 0 0 0;
 }
+/*
+*****************************ALTAVOZ*****************************
+*****************************ALTAVOZ*****************************
+*****************************ALTAVOZ*****************************
+*/
 #altavoz{
     margin-left: 1em;
     height: 40%;
@@ -359,6 +487,13 @@ body{
     border-radius: 0 50px 50px 0;
     box-shadow: 10px 0px 38px 1px black;
 }
+/*
+*****************************BOTONES L Y R*****************************
+*****************************BOTONES L Y R*****************************
+*****************************BOTONES L Y R*****************************
+*****************************BOTONES L Y R*****************************
+*****************************BOTONES L Y R*****************************
+*/
 #botones-arriba{
     position: absolute;
     top:7%;
@@ -383,6 +518,15 @@ body{
     border-radius: 150px 157px 356px 0px / 78px 33px 138px 0px;
     transform: rotate(-165deg);
 }
+
+
+/*
+*****************************RESPONSIVE*****************************
+*****************************RESPONSIVE*****************************
+*****************************RESPONSIVE*****************************
+*****************************RESPONSIVE*****************************
+*****************************RESPONSIVE*****************************
+*/
 
 @media (max-width: 730px){
     body{
