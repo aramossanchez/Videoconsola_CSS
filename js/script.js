@@ -27,7 +27,7 @@ let Azul = document.getElementById("Azul");
 //CREAMOS VARIABLE PARA SABER SI LA CONSOLA ESTÁ ENCENDIDA Y SI EL JUEGO ESTÁ INICIADO
 
 var consolaEncendida = false;
-var juegoIniciado = false;
+var juegoArrancado = false;
 
 /*
 ************************************************************************************************
@@ -119,7 +119,7 @@ const arrancarJuego = () =>{
             pantalla_inicio_juego.style.display="block";
             pantalla_inicio_juego.play();
             pantalla.style.backgroundColor="black";
-            juegoIniciado = true;
+            juegoArrancado = true;
         }, 4100);
     }
     else{
@@ -131,7 +131,7 @@ const arrancarJuego = () =>{
 //HACE DESAPARECER LA INTRO DEL JUEGO E INICIA EL JUEGO
 
 const IniciarJuego = () => {
-    if(juegoIniciado){
+    if(juegoArrancado){
         pantalla_inicio_juego.style.display="none";
         juego.style.display="block";
         pantalla_inicio_juego.pause();
