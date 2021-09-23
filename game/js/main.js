@@ -53,6 +53,7 @@ var contador = 0;
 
 
 //CONTADOR PARA SABER CUANTOS ENEMIGOS MUERTOS HAY
+
 var puntuacion = 0;
 
 /*
